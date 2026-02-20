@@ -16,10 +16,12 @@ channel_targets:
 - conda-forge main
 expat:
 - '2'
+freetype:
+- '2'
 glib:
 - '2'
 libxml2_devel:
-- '2.13'
+- '2.15'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:

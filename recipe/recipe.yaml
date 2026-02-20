@@ -17,7 +17,7 @@ source:
     - 0001-remove-appstream-dependency.patch
 
 build:
-  number: 1
+  number: 3
   script:
     - if: win
       then: |
@@ -55,6 +55,7 @@ requirements:
     - gobject-introspection
     - python
   host:
+    - freetype
     - glib
     - glib >=2.80.0
     - gtk4 >=4.19.4
@@ -73,6 +74,14 @@ requirements:
     - python
   run_exports:
     - ${{ pin_subpackage('libadwaita', upper_bound='x.x') }}
+  ignore_run_exports:
+    by_name:
+      - libexpat
+      - adwaita-icon-theme
+      - libzlib
+      - libxmlb
+      - libfreetype6
+      - libxml2-16
 
 tests:
   - package_contents:
