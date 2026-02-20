@@ -74,6 +74,14 @@ requirements:
     - python
   run_exports:
     - ${{ pin_subpackage('libadwaita', upper_bound='x.x') }}
+  ignore_run_exports:
+    by_name:
+      - libexpat
+      - adwaita-icon-theme
+      - libzlib
+      - libxmlb
+      - libfreetype6
+      - libxml2-16
 
 tests:
   - package_contents:
