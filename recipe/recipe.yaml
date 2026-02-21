@@ -33,8 +33,14 @@ build:
         ninja -v -C builddir -j %CPU_COUNT%
         ninja -C builddir install -j %CPU_COUNT%
       else: |
-        cp -f ${BUILD_PREFIX}/bin/glib-mkenums ${PREFIX}/bin/glib-mkenums
-        cp -f ${BUILD_PREFIX}/bin/glib-genmarshal ${PREFIX}/bin/glib-genmarshal
+        if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
+          for tool in glib-mkenums glib-genmarshal; do
+              cp -f ${BUILD_PREFIX}/bin/${tool} ${PREFIX}/bin/${tool}
+          done          
+          echo '#!/bin/bash' > ${PREFIX}/bin/glib-compile-resources
+          echo "exec ${BUILD_PREFIX}/bin/glib-compile-resources \"\$@\"" >> ${PREFIX}/bin/glib-compile-resources
+          chmod +x ${PREFIX}/bin/glib-compile-resources
+        fi
         meson setup ${MESON_ARGS} \
             --prefix=$PREFIX \
             --default-library=shared \
