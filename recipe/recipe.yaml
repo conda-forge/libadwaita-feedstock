@@ -17,7 +17,7 @@ source:
     - 0001-remove-appstream-dependency.patch
 
 build:
-  number: 2
+  number: 3
   script:
     - if: win
       then: |
@@ -33,11 +33,22 @@ build:
         ninja -v -C builddir -j %CPU_COUNT%
         ninja -C builddir install -j %CPU_COUNT%
       else: |
+        if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
+          for tool in glib-mkenums glib-genmarshal; do
+              cp -f ${BUILD_PREFIX}/bin/${tool} ${PREFIX}/bin/${tool}
+          done          
+          echo '#!/bin/bash' > ${PREFIX}/bin/glib-compile-resources
+          echo "exec ${BUILD_PREFIX}/bin/glib-compile-resources \"\$@\"" >> ${PREFIX}/bin/glib-compile-resources
+          chmod +x ${PREFIX}/bin/glib-compile-resources
+          INTROSPECTION=disabled
+        else
+          INTROSPECTION=enabled
+        fi
         meson setup ${MESON_ARGS} \
             --prefix=$PREFIX \
             --default-library=shared \
             --wrap-mode=nofallback \
-            -Dintrospection=enabled \
+            -Dintrospection=${INTROSPECTION} \
             -Dtests=false \
             -Dexamples=false \
             -Dvapi=false \
@@ -54,6 +65,8 @@ requirements:
     - pkg-config
     - gobject-introspection
     - python
+    - sassc
+    - glib
   host:
     - freetype
     - glib
@@ -63,7 +76,6 @@ requirements:
     - gobject-introspection
     - zlib
     - expat
-    - sassc
     - python
     - if: unix
       then:
