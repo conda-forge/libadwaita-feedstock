@@ -33,6 +33,8 @@ build:
         ninja -v -C builddir -j %CPU_COUNT%
         ninja -C builddir install -j %CPU_COUNT%
       else: |
+        cp -f ${BUILD_PREFIX}/bin/glib-mkenums ${PREFIX}/bin/glib-mkenums
+        cp -f ${BUILD_PREFIX}/bin/glib-genmarshal ${PREFIX}/bin/glib-genmarshal
         meson setup ${MESON_ARGS} \
             --prefix=$PREFIX \
             --default-library=shared \
@@ -55,6 +57,7 @@ requirements:
     - gobject-introspection
     - python
     - sassc
+    - glib
   host:
     - freetype
     - glib
