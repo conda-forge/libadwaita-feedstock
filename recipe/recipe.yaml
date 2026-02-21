@@ -54,6 +54,7 @@ requirements:
     - pkg-config
     - gobject-introspection
     - python
+    - sassc
   host:
     - freetype
     - glib
@@ -63,7 +64,6 @@ requirements:
     - gobject-introspection
     - zlib
     - expat
-    - sassc
     - python
     - if: unix
       then:
