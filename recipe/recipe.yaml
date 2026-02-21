@@ -40,12 +40,15 @@ build:
           echo '#!/bin/bash' > ${PREFIX}/bin/glib-compile-resources
           echo "exec ${BUILD_PREFIX}/bin/glib-compile-resources \"\$@\"" >> ${PREFIX}/bin/glib-compile-resources
           chmod +x ${PREFIX}/bin/glib-compile-resources
+          INTROSPECTION=disabled
+        else
+          INTROSPECTION=enabled
         fi
         meson setup ${MESON_ARGS} \
             --prefix=$PREFIX \
             --default-library=shared \
             --wrap-mode=nofallback \
-            -Dintrospection=enabled \
+            -Dintrospection=${INTROSPECTION} \
             -Dtests=false \
             -Dexamples=false \
             -Dvapi=false \
