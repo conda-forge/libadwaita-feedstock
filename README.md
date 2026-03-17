@@ -15,7 +15,7 @@ Documentation: https://gnome.pages.gitlab.gnome.org/libadwaita/doc/
 
 Adwaita offers application developers many widgets and
 objects to build GNOME applications scaling from desktop
-workstations to mobile phones.
+workstations to mobile phones. 
 
 Current build status
 ====================
