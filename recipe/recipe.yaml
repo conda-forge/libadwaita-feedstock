@@ -69,10 +69,13 @@ requirements:
     - glib
   host:
     - freetype
+    - gettext
     - glib
     - glib >=2.80.0
+    - graphene
     - gtk4 >=4.19.4
     - fribidi
+    - pango
     - gobject-introspection
     - zlib
     - expat
