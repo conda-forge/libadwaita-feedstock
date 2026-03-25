@@ -17,7 +17,7 @@ source:
     - 0001-remove-appstream-dependency.patch
 
 build:
-  number: 0
+  number: 1
   script:
     - if: win
       then: |
@@ -69,10 +69,13 @@ requirements:
     - glib
   host:
     - freetype
+    - gettext
     - glib
     - glib >=2.80.0
+    - graphene
     - gtk4 >=4.19.4
     - fribidi
+    - pango
     - gobject-introspection
     - zlib
     - expat
