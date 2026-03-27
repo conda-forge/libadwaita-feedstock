@@ -20,6 +20,8 @@ glib:
 - '2'
 libxml2_devel:
 - '2.15'
+pango:
+- '1'
 pin_run_as_build:
   python:
     min_pin: x.x
