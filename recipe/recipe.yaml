@@ -57,6 +57,7 @@ requirements:
     - gobject-introspection
     - sassc
     - glib
+    - zlib
   host:
     - freetype
     - gettext
