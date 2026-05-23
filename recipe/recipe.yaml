@@ -23,8 +23,10 @@ build:
       then: |
         set "PKG_CONFIG_PATH=%LIBRARY_LIB%\pkgconfig;%LIBRARY_PREFIX%\share\pkgconfig;%BUILD_PREFIX%\Library\lib\pkgconfig"
         set "XDG_DATA_DIRS=%XDG_DATA_DIRS%;%LIBRARY_PREFIX%\share"
-        meson setup %MESON_ARGS% ^
+        meson setup ^
+          --buildtype=release ^
           --prefix=%LIBRARY_PREFIX% ^
+          --libdir=lib ^
           --default-library=shared ^
           --wrap-mode=nofallback ^
           -Dintrospection=enabled ^
