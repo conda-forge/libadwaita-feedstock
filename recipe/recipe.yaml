@@ -33,6 +33,7 @@ build:
         ninja -v -C builddir -j %CPU_COUNT%
         ninja -C builddir install -j %CPU_COUNT%
       else: |
+        export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig
         meson setup ${MESON_ARGS} \
             --prefix=$PREFIX \
             --default-library=shared \
@@ -58,13 +59,11 @@ requirements:
   host:
     - freetype
     - gettext
-    - glib
-    - glib >=2.80.0
+    - glib >=2.84.0
     - graphene
-    - gtk4 >=4.19.4
+    - gtk4 >=4.21.1
     - fribidi
     - pango
-    - gobject-introspection
     - zlib
     - expat
     - if: unix
