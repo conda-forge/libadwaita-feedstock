@@ -33,22 +33,11 @@ build:
         ninja -v -C builddir -j %CPU_COUNT%
         ninja -C builddir install -j %CPU_COUNT%
       else: |
-        if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
-          for tool in glib-mkenums glib-genmarshal; do
-              cp -f ${BUILD_PREFIX}/bin/${tool} ${PREFIX}/bin/${tool}
-          done          
-          echo '#!/bin/bash' > ${PREFIX}/bin/glib-compile-resources
-          echo "exec ${BUILD_PREFIX}/bin/glib-compile-resources \"\$@\"" >> ${PREFIX}/bin/glib-compile-resources
-          chmod +x ${PREFIX}/bin/glib-compile-resources
-          INTROSPECTION=disabled
-        else
-          INTROSPECTION=enabled
-        fi
         meson setup ${MESON_ARGS} \
             --prefix=$PREFIX \
             --default-library=shared \
             --wrap-mode=nofallback \
-            -Dintrospection=${INTROSPECTION} \
+            -Dintrospection=enabled \
             -Dtests=false \
             -Dexamples=false \
             -Dvapi=false \
@@ -64,7 +53,6 @@ requirements:
     - ninja
     - pkg-config
     - gobject-introspection
-    - python
     - sassc
     - glib
   host:
@@ -79,14 +67,11 @@ requirements:
     - gobject-introspection
     - zlib
     - expat
-    - python
     - if: unix
       then:
         - appstream
         - libxml2-devel
         - libxmlb
-  run:
-    - python
   run_exports:
     - ${{ pin_subpackage('libadwaita', upper_bound='x.x') }}
   ignore_run_exports:
