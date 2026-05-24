@@ -19,7 +19,7 @@ expat:
 freetype:
 - '2'
 glib:
-- '2'
+- '2.88'
 libxml2_devel:
 - '2.15'
 macos_machine:

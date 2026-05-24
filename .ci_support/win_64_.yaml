@@ -11,7 +11,7 @@ expat:
 freetype:
 - '2'
 glib:
-- '2'
+- '2.88'
 pango:
 - '1'
 target_platform:
