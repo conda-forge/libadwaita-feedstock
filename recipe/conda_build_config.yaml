@@ -1,3 +1,5 @@
 # AppStream dependency needs libxml2-devel 2.15
 libxml2_devel:
   - 2.15  # [unix]
+glib:
+  - 2.88
