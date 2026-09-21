@@ -18,8 +18,6 @@ freetype:
 - '2'
 glib:
 - '2.90'
-libxml2_devel:
-- '2.15'
 pango:
 - '1'
 target_platform:

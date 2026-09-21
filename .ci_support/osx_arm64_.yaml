@@ -20,8 +20,6 @@ freetype:
 - '2'
 glib:
 - '2.90'
-libxml2_devel:
-- '2.15'
 macos_machine:
 - arm64-apple-darwin20.0.0
 pango:
@@ -30,3 +28,7 @@ target_platform:
 - osx-arm64
 zlib:
 - '1'
+
+CONDA_BUILD_SYSROOT:
+- /Users/dyeaw/Projects/libadwaita-feedstock/SDKs/MacOSX11.0.sdk
+

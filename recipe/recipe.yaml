@@ -71,10 +71,6 @@ requirements:
     - zlib
     - expat
     - ministream
-    - if: unix
-      then:
-        - libxml2-devel
-        - libxmlb
   run_exports:
     - ${{ pin_subpackage('libadwaita', upper_bound='x.x') }}
   ignore_run_exports:
@@ -82,9 +78,7 @@ requirements:
       - libexpat
       - adwaita-icon-theme
       - libzlib
-      - libxmlb
       - libfreetype6
-      - libxml2-16
 
 tests:
   - package_contents:
