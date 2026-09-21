@@ -28,7 +28,3 @@ target_platform:
 - osx-arm64
 zlib:
 - '1'
-
-CONDA_BUILD_SYSROOT:
-- /Users/dyeaw/Projects/libadwaita-feedstock/SDKs/MacOSX11.0.sdk
-
