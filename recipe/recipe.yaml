@@ -13,8 +13,6 @@ package:
 source:
   url: https://download.gnome.org/sources/libadwaita/${{ version_majmin }}/libadwaita-${{ version }}.tar.xz
   sha256: b1bf56239269d101a6391ad4553c910eff9cc6170b803916405477ef60a66c84
-  patches:
-    - 0001-remove-appstream-dependency.patch
 
 build:
   number: 0
