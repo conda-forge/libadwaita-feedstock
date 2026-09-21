@@ -70,9 +70,6 @@ requirements:
     - pango
     - zlib
     - expat
-    - if: unix
-      then:
-    - expat
     - ministream
     - if: unix
       then:
