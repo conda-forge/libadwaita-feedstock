@@ -65,7 +65,7 @@ requirements:
     - gettext
     - glib
     - graphene
-    - gtk4 >=4.21.1
+    - gtk4 >=4.22.0
     - fribidi
     - pango
     - zlib
