@@ -63,7 +63,7 @@ requirements:
   host:
     - freetype
     - gettext
-    - glib >=2.90.0
+    - glib
     - graphene
     - gtk4 >=4.22.0
     - fribidi
