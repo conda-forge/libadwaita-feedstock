@@ -72,7 +72,10 @@ requirements:
     - expat
     - if: unix
       then:
-        - appstream
+    - expat
+    - ministream
+    - if: unix
+      then:
         - libxml2-devel
         - libxmlb
   run_exports:
